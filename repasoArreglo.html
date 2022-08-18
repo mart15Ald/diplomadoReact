@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="ventanita">Algo</p>
+    <script>
+        //Objeto javascript
+        let hospital = {
+            nombre: 'La raza',
+            direccion: 'Lazaro cardenas 22',
+            especialidades: ['Orthopedia', 'Pediatria', 'Oncologia']
+
+        };
+
+        let hospital2 = {
+            nombre: 'Siglo 21',
+            direccion: 'Pino 21',
+            especialidades: ['Pediatria', 'Cardiologia']
+
+        };
+
+        //Manipular el DOM
+        //Crear el nuevo elemento
+        let h1 = document.createElement('h1');
+        let cadenaSalida = 'Nombre hospital: ' + hospital.nombre;
+        cadenaSalida += ', especialidades ' + hospital.especialidades[1];
+        // Asignarle el contenido al elemento
+        h1.innerText = cadenaSalida;
+        //Agrega un elemento al DOM
+        document.body.append(h1);
+
+        //Crea 2 elementos nuevos
+        let ul = document.createElement('ul');
+        //Asigna el contenido al elemento
+        let contenido = '<li>' + hospital.nombre + '</li>';
+        contenido += '<li>' + hospital2.nombre + '</li>';
+        ul.innerHTML = contenido;
+
+        document.body.append(ul);
+
+
+        let ulEsp = document.createElement('ul');
+        //Asigna el contenido al elemento
+        // let contenidoEsp = '';
+        // hospital.especialidades.forEach(function (item) {
+        //     if (contenidoEsp.indexOf(item.toString()) != -1)
+        //         contenidoEsp += '<li>' + item + '</li>';
+        // });
+
+        // let ulEsp2 = document.createElement('ul');
+        // let contenidoEsp2 = '';
+        // hospital2.especialidades.forEach(function (item) {
+        //     if (contenidoEsp2.indexOf(item.toString()) != -1)
+        //         contenidoEsp2 += '<li>' + item + '</li>';
+        // });
+
+        // ulEsp2.innerHTML = contenidoEsp2;
+
+        // ulEsp.innerHTML = contenidoEsp;
+        // document.body.append(ulEsp);
+        // document.body.append(ulEsp2);
+
+
+
+        let tercer = [];
+
+        try {
+            for (let i = 0; i < hospital2.especialidades.length; i++) {
+                let resultadoBusqueda = hospital.especialidades.indexOf(hospital2.especialidades[i]);
+                if (resultadoBusqueda == -1) {
+                    hospital.especialidades = [...hospital.especialidades, hospital2.especialidades[i]];
+                }
+            }
+
+            let contenidoEsp = '';
+            console.log(hospital.especialidades);
+            hospital.especialidades.forEach(function (item) {
+                contenidoEsp += '<li>' + item + '</li>';
+            });
+            ulEsp.innerHTML = contenidoEsp;
+            document.body.append(ulEsp);
+        } catch (error) {
+            console.log(error);
+            document.getElementById('ventanita').innerText = error;
+        }
+
+
+
+
+
+
+
+        let arrayNombres = ['Ana', 'Rocio', 'Pedro'];
+        let segundoArreglo = ['Carlos', 'Jorge', 'Ana', 'Rocio'];
+        try {
+            for (let i = 0; i < segundoArreglo.length; i++) {
+                let resultadoBusqueda = arrayNombres.indexOf(segundoArreglo[i]);
+                if (resultadoBusqueda == -1) {
+                    arrayNombres = [...arrayNombres, segundoArreglo[i]];
+                }
+            }
+            document.getElementById('ventanita').innerText = arrayNombres.length;
+        } catch (error) {
+            document.getElementById('ventanita').innerText = error;
+        }
+
+    </script>
+</body>
+
+</html>
